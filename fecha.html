@@ -7,7 +7,7 @@
     <title>Iniciar sección</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
   </head>
 <body>
   <div class="container">
@@ -55,21 +55,21 @@
         </div>
       </nav>
     </div>
-<div class="container">
-<div class="row">
-  <div class="col-1"></div>
-    <div class="col-8">
-<form action="iniciosub.html" method="post">
-        <label for="correo" class="form-label">Ingrese su correo</label>
-        <input type="email" class="form-control" id="correo" name="correo" placeholder="name@example.com" required>
-        <br><label for="tx_password" class="form-label">Ingrese su contraseña</label>
-        <input type="password" class="form-control" name="password" id="tx_password" required minlength="4" maxlength="10" required>
-<br><button type="reset" class="btn btn-danger">Limpiar</button>
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-      </form>
-
-    </div>
-
+    <div class="container">
+<form action="" method="post">
+    <label for="tx_fecha " class="form-label">Seleccione la fecha de despacho</label>
+    <input type="date" data-mdb-inline="true">
+    <br><label for="tx_horas" class="form-label">Seleccione el horario de despacho</label>
+    <select name="" id="horario" rounded>
+        <option value="1" rounded>09:00 AM a 12:00 hrs</option>
+        <option value="2" rounded>12:01 a 18:00 hrs</option>
+        
+    </select>
+    <h4><label for="tx_info">Debido a la situación actual del país hay posibilidades de retraso de en los repartos</label></h4>
+    <button type="submit" class="btn btn-primary">Ir a Pagar</button>
+    <button type="reset" class="btn btn-danger">Cancelar</button>
+</form>
+</div>
   </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
