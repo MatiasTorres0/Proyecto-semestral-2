@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "MatiasTorres0",
+			"path": "..\\..\\..\\..\\..\\MatiasTorres0"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Proyecto-Mascotas"
+	}
+}
