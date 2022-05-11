@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despacho a domicilio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function(){
+            
+            $("#enviar").click(function(){
+                
+                $.get("https://apis.digital.gob.cl/dpa/regiones",
+                    function(data){
+                        $.each(data.codigo, function(i, item){
+    
+                            var msg ="<tr>";
+                                msg +="<td>"+ item.codigo + "</td>";
+
+                                msg +="<td>"+ item.nombre + "</td>";
+
+                                msg += "</tr>";
+    $("#codigo").append(msg)}
+                        );
+                            }
+                );
+                        }
+            )
+                    }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+
+                <div class="col-8">
+                    <form action="" method="post">
+                        <label for="tx_region" class="codigo">Ingrese su region</label>
+                        <input type="text" class="form-control" placeholder="">
+                        <select name="" id="codigo">msg</select>
+                        <br><label for="tx_ciudad">Ingrese su ciudad</label>
+                        <br><input type="text" class="form-control" name="tx_ciudad" id="tx_ciudad" required>
+                        <br><label for="tx_comuna">Ingrese su comuna</label>
+                        <input type="text" class="form-control" name="tx_comuna" id="tx_comuna" required>
+                        <br><label for="tx_direccion">Ingrese su dirección</label>
+                        <input type="text" class="form-control" name="tx_direccion" id="tx_direccion" required>
+                        <br><label for="comentario" class="form-label" >A continuación podrá dejar sus observaciones para la entrega (opcional)</label>
+<textarea name="comentario" class="form-control form-control-focus" id="" cols="60" rows="5"></textarea>
+<br><button type="reset" class="btn btn-danger">Limpiar</button>
+<button type="submit" id="enviar" class="btn btn-primary">Continuar</button>
+</form>
+                </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
