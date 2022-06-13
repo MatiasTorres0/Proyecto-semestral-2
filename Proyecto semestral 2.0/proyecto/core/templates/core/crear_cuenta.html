@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script>
+      function comprobarClave(){
+        tx_contraseña = document.formularios.tx_contraseña.value
+        tx_contraseña1 = document.formularios.tx_contraseña1.value
+      
+          if (tx_contraseña == tx_contraseña1)
+           submit
+          else
+              alert("Las dos claves son distintas.")
+             
+      }
+      
+      </script>
+  </head>
+<body>
+
+  {%extends 'core/base.html'%}
+  {load static}
+  {%block contenido%}
+    <div class="container">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-8">
+    <form action="#" name ="formularios"method="post">
+<br><label for="tx_nombre" class="form-label">Ingrese su nombre</label>
+<input type="text" class="form-control" name="tx_nombre" id="tx_nombre" required >
+<br><label for="tx_apellidos" class="form-label">Ingrese sus apellidos</label>
+<input type="text" class="form-control" name="tx_apellidos" id="tx_apellidos" required >
+<br><label for="tx_email" class="form-label">Ingrese su correo</label>
+<input type="email" class="form-control" name="tx_email" id="tx_email" required>
+<br><label for="tx_contraseña" class="form-label">Ingrese su contraseña</label>
+<input type="password" class="form-control" name="tx_contraseña" id="tx_contraseña" required minlength="4" maxlength="10">
+
+<br><label for="tx_contraseña" class="form-label">Ingrese nuevamente su contraseña</label>
+<input type="password" class="form-control" name="tx_contraseña1" id="tx_contraseña1" required minlength="4" maxlength="10">
+
+
+<br><input type="reset" class="btn btn-danger" value="Limpiar">
+
+<input class="btn btn-primary" type="submit" value="Enviar" onClick="comprobarClave()">
+
+</form>
+        </div>
+
+
+        {%endblock contenido%}
+</body>
+
+</html>

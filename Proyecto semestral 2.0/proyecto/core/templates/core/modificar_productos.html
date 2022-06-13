@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<h2>Modificar Productos</h2>
+
+<form action="" method="post">
+    <table>
+<tr>
+    <th>Nombre</th>
+    <th>Peso</th>
+    <th>Precio</th>
+    <th>Información</th>
+</tr>
+{% for p in product %}
+<tr>
+    <td>{{ p.nombre }}</td>
+    <td>{{ p.peso }}</td>
+    <td>{{ p.precio }}</td>
+    <td>{{ p.información }}</td>
+
+
+    <td>
+        <a href="{% url 'modificar_producto' p.id %}">Modificar Producto</a>
+        
+    </td>
+</tr>
+{% endfor %}
+    </table>
+
+
+</form>
+
+{{ mensaje }}
+{% endblock %}
