@@ -25,21 +25,22 @@
             <th>Precio</th>
             <th>Información</th>
         </tr>
-        {%for p in productos%}
-        </table>
+        {%for p in product%}
+
         
-        'endfor'
-      
-      
+        
+
         <tr>
             <td>{{p.id}}</td</>
-            <td>{{p.Nombre}}</td>
-            <td>{{p.Peso}}</td>
-            <td>{{p.Precio}}</td>
-            <td>{{p.Información}}</td>
+            <td>{{p.nombre}}</td>
+            <td>{{p.peso}}</td>
+            <td>{{p.precio}}</td>
+            <td>{{p.infomacion}}</td>
+            
         </tr>
         {%endfor%}
-        
+    </table>
+
     {%endblock contenido%}
 </body>
 </html>

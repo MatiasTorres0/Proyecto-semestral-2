@@ -1,14 +1,17 @@
 from urllib.request import Request
 from django.shortcuts import render
 from .models import Producto
+from .forms import ProductoForm
 from .forms import CustomUserForm
+from django.contrib.auth import login,authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import render, redirect
 # Create your views here.
 def inicio(request):
     return render(request,'core/inicio.html')
-@login_required
-def carrito(request):
-    return render(request,'core/carrito.html')
+
+
 
 def codigo(request):
     return render(request,'core/codigo.html')
@@ -50,10 +53,10 @@ def olvidecontraseña(request):
 def modificar_productos(request, id):
     productos=Producto.objects.get(id=id)
     data={
-        'form':Producto(instance=productos)
+        'form':ProductoForm(instance=productos)
     }
     if request.method == 'POST':
-        formulario = Producto(data=request.POST , instance=productos)
+        formulario = ProductoForm(data=request.POST , instance=productos)
         if formulario.is_valid():
             formulario.save()
             data['mensaje']="Modificado correctamente"
@@ -76,10 +79,37 @@ def retirotienda(request):
 
 @login_required
 def eliminar_producto(request,id):
-    producto=Producto.objects.get(id=id)
-    producto.delete()
+    product=Producto.objects.get(id=id)
+    product.delete()
+    return redirect(to="listado_productos")
 
-    return render(to="productos")
+def registro_usuario(request):
+    data={
+        'form':CustomUserForm()
+    }
+    if request.method == 'POST':
+        formulario=CustomUserForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            username= formulario.cleaned_data['username']
+            password= formulario.cleaned_data['password']
+            user= authenticate(username=username,password=password)
+            login(request,user)
+            return redirect(to="home")
+    return render(request,'registration/registro.html',data)
 
-def registro(request):
-    return render(request,'registration/registar.html')
+@permission_required(['core.edit_producto'])
+def listado_productos(request):
+    product= Producto.objects.all()
+    data={
+        'product':product
+    }
+    return render(request, 'core/listado_productos.html' ,data)
+
+def carrito(request):
+    product= Producto.objects.all()
+    data={
+        'product':product
+        
+        }
+    return render(request,'core/carrito.html',data)

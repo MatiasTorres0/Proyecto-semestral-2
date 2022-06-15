@@ -12,12 +12,12 @@
 
 <body>
 {%extends 'core/base.html'%}
-{load static}
+{%load static%}
 {%block contenido%}
         <center><section class="Quienes">
 
           <h1> Quienes somos </h1>
-          <img src="img/photo_2022-03-30_15-58-48.jpg"
+          <img src="{% static 'core/'%}img/photo_2022-03-30_15-58-48.jpg"
           width="250px"
           height="300px"
           alt = "..." >
