@@ -7,6 +7,10 @@ from django.contrib.auth import login,authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
+
+# rest_framework
+from rest_framework import viewsets
+from .serializers import ProductoSerializer
 # Create your views here.
 def inicio(request):
     return render(request,'core/inicio.html')
@@ -113,3 +117,10 @@ def carrito(request):
         
         }
     return render(request,'core/carrito.html',data)
+
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+

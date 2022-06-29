@@ -1,5 +1,14 @@
+from django.db import router
+from django.urls.conf import include
 from django.urls import path
-from .views import inicio, registro_usuario,listado_productos, crear_cuenta,iniciosub, modificar_productos, eliminar_producto,codigo, carrito, productos, fecha,  despacho, nuevacontraseña, olvidecontraseña, quienessomos, retiro, solicituddespacho, subscripciones,productos,retirotienda
+from .views import  inicio, registro_usuario,listado_productos, crear_cuenta,iniciosub, modificar_productos, eliminar_producto,codigo, carrito, productos, fecha,  despacho, nuevacontraseña, olvidecontraseña, quienessomos, retiro, solicituddespacho, subscripciones,productos,retirotienda
+
+from .views import ProductoViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('producto', ProductoViewSet)
+
 
 urlpatterns = [
     path('', inicio, name="inicio"),
@@ -23,4 +32,5 @@ urlpatterns = [
     path ('eliminar_producto/<id>', eliminar_producto, name="eliminar_producto"),
     path ('registro/',registro_usuario,name="registro_usuario"),
     path('listado_productos',listado_productos,name="listado_productos"),
+    path('api/', include(router.urls)),
 ]
